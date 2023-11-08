@@ -36,7 +36,7 @@ Their demonstration showcases the potential in toy scenarios. But how about more
 
 This repo seeks to demonstrate that:
 - Identical codebases can be deployed to either a single-node container or a Spark cluster.
-- Application-specific environment variables, settable through a Terraform file, dictate the initiation of a DuckDB spark session or a genuine Spark session.
-- This dual compatibility facilitates the use of both DuckDB and PySpark in real-world scenarios.
+- Application-specific environment variables, which can be set through a Terraform file, dictate the initiation of a DuckDB spark session or a genuine Spark session.
+- This dual compatibility facilitates the use of both DuckDB and PySpark in real-world scenarios with zero code changes.
 
 > **Warning**: The DuckDB Spark API is currently experimental and not recommended for production use.
