@@ -31,7 +31,11 @@ Allowing for horizontal scaling with Spark, requiring minimal code adjustments, 
 MotherDuck has discussed using DuckDB to enhance Spark's speed:
 [Making PySpark Code Faster with DuckDB](https://motherduck.com/blog/making-pyspark-code-faster-with-duckdb/)
 
-Their demonstration showcases the potential in toy scenarios. But how about more complex, realistic ETL pipelines that are indifferent to running on single machines with DuckDB or distributed through Spark?
+Their demonstration showcases the potential in toy scenarios. 
+
+MotherDuck point out that a DuckDB spark client can save costs by provisioning tests on just a single node.
+
+But how about more complex, realistic ETL pipelines that are indifferent to running on single machines with DuckDB or distributed through Spark?
 
 ### Objectives of This Repository:
 
