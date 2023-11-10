@@ -24,7 +24,7 @@ As DuckDB's Spark API matures and expands, it could become an ideal substitute f
 
 Advocates for Spark and Polars argue they're faster and leaner than Spark. But in scenarios where data sizes unpredictably double, vertical scaling (e.g., more RAM) may not be viable or desirable.
 
-Allowing for horizontal scaling with Spark, requiring minimal code adjustments, is prudent. It prevents the need for extensive refactoring for the occasional pipelines that do need Spark.
+Allowing for horizontal scaling with Spark, requiring minimal code adjustments, is prudent. It prevents the need for extensive refactoring for the occasional pipelines that do need distributed Spark.
 
 ### DuckDB as a Spark Accelerator:
 
