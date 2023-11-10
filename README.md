@@ -2,7 +2,7 @@
 
 PySpark is recognized as the go-to DataFrame API for data engineering. 
 
-Traditional PySpark is particularly well suited for scaling to massive datasets. However, PySpark not as efficient for smaller datasets. Here's why:
+Traditional PySpark is particularly well suited for scaling to massive datasets. However, PySpark is not as poor choice for smaller datasets. Here's why:
 
 - Spark operates on a Java Virtual Machine, which introduces a significant overhead.
 - Multi-node operations in Spark involve either complex infrastructure or relatively high costs for serverless environments (e.g., DataBricks, DataProc).
