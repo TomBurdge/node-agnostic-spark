@@ -58,7 +58,7 @@ By default, the pyspark IO code is commented. I will refactor this soon to make 
 
 This repo seeks to demonstrate that:
 - Near identical codebases can be deployed to either a single-node container or a Spark cluster.
-- It is possible to move to begin pipelines (by default) without distributed spark and then scale up to true spark with only infrastructure changes.
+- It is possible to move to begin pipelines (by default) without distributed spark and then scale up to true spark with only infrastructure changes, i.e. without changes to transformation logic.
 - This dual compatibility facilitates the use of both DuckDB and PySpark in real-world scenarios with low and decoupled code changes.
 
 > **Warning**: The DuckDB Spark API is currently experimental and not recommended for production use.
