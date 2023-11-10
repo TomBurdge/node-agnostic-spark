@@ -50,7 +50,7 @@ In this repo there are three options for the io for the pipeline (this is still 
 * [Spark PySpark, which saves to a duckdb file at each step](https://dagster.io/integrations/dagster-duckdb-pyspark) in the pipeline (WIP).
 * DuckDB PySpark, which saves to a parquet between each step in the pipeline. 
 
-Dagster typically pickles its objects between each asset, but you can't pickle a DuckDB spark or regular PySpark session. As a result, dagster loads the files as parquets at each step (ELTL data pipelines). Both Spark and DuckDB write to parquet very efficiently, although it is a little cumbersome (though not the end of the world) to initiate a spark session at each step with true PySpark. This also makes testing a bit less "unit" test, i.e. involving the most basic components, but this is no worse than any other orchestrator with Spark.
+Dagster typically pickles its objects between each asset, but you can't pickle a DuckDB spark or regular PySpark session. As a result, dagster loads the files as parquets at each step (ELTL data pipelines). Both Spark and DuckDB write to parquet very efficiently, although it is a little cumbersome (though not the end of the world) to initiate a spark session at each step with true PySpark. This also makes testing a bit less like "unit" tests, i.e. testing the most basic units of code, but this is no worse than any other orchestrator with Spark.
 
 By default, the pyspark IO code is commented. I will refactor this soon to make it a little better pedagogically.
 
