@@ -37,11 +37,28 @@ MotherDuck point out that a DuckDB spark client can save costs by provisioning t
 
 But how about more complex, realistic ETL pipelines that are indifferent to running on single machines with DuckDB or distributed through Spark?
 
+### DuckDB PySpark with an Orchestrator:
+
+ETL pipelines (almost) always use an orchestrator in some form.
+
+There are plenty of options for orchestrators. One great choice of orchestrator is [Dagster](https://github.com/dagster-io/dagster). 
+
+Dagster is a particularly good choice because it [separates the IO code from the pipeline code](https://docs.dagster.io/concepts/io-management/io-managers). This is particularly useful, because you could switch between duckdb spark and true pyspark without changing the etl pyspark code.
+
+In this repo there are three options for the io for the pipeline (this is still a WIP, not everything is quite finished):
+* [Spark PySpark which saves to parquet for between each step](https://docs.dagster.io/integrations/spark) in the pipeline.
+* [Spark PySpark, which saves to a duckdb file at each step](https://dagster.io/integrations/dagster-duckdb-pyspark) in the pipeline (WIP).
+* DuckDB PySpark, which saves to a parquet between each step in the pipeline. 
+
+Dagster typically pickles its objects between each asset, but you can't pickle a DuckDB spark or regular PySpark session. As a result, dagster loads the files as parquets at each step (ELTL data pipelines). Both Spark and DuckDB write to parquet very efficiently, although it is a little cumbersome (though not the end of the world) to initiate a spark session at each step with true PySpark. This also makes testing a bit less "unit" test, i.e. involving the most basic components, but this is no worse than any other orchestrator with Spark.
+
+By default, the pyspark IO code is commented. I will refactor this soon to make it a little better pedagogically.
+
 ### Objectives of This Repository:
 
 This repo seeks to demonstrate that:
-- Identical codebases can be deployed to either a single-node container or a Spark cluster.
-- Application-specific environment variables, which can be set through a Terraform file, dictate the initiation of a DuckDB spark session or a genuine Spark session.
-- This dual compatibility facilitates the use of both DuckDB and PySpark in real-world scenarios with zero code changes.
+- Near identical codebases can be deployed to either a single-node container or a Spark cluster.
+- It is possible to move to begin pipelines (by default) without distributed spark and then scale up to true spark with only infrastructure changes.
+- This dual compatibility facilitates the use of both DuckDB and PySpark in real-world scenarios with low and decoupled code changes.
 
 > **Warning**: The DuckDB Spark API is currently experimental and not recommended for production use.
