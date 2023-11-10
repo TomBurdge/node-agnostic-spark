@@ -31,7 +31,7 @@ Allowing for horizontal scaling with Spark, requiring minimal code adjustments, 
 MotherDuck has discussed using DuckDB to enhance Spark's speed:
 [Making PySpark Code Faster with DuckDB](https://motherduck.com/blog/making-pyspark-code-faster-with-duckdb/)
 
-Their demonstration showcases the potential in toy scenarios. 
+Their demonstration showcases the potential in a toy scenario. 
 
 MotherDuck point out that a DuckDB spark client can save costs by provisioning tests on just a single node.
 
@@ -52,13 +52,13 @@ In this repo there are three options for the io for the pipeline (this is still 
 
 Dagster typically pickles its objects between each asset, but you can't pickle a DuckDB spark or regular PySpark session. As a result, dagster loads the files as parquets at each step (ELTL data pipelines). Both Spark and DuckDB write to parquet very efficiently, although it is a little cumbersome (though not the end of the world) to initiate a spark session at each step with true PySpark. This also makes testing a bit less like "unit" tests, i.e. testing the most basic units of code, but this is no worse than any other orchestrator with Spark.
 
-By default, the pyspark IO code is commented. I will refactor this soon to make it a little better pedagogically.
+By default, the pyspark IO code is commented. I will refactor this soon to make it more accessible.
 
 ### Objectives of This Repository:
 
 This repo seeks to demonstrate that:
 - Near identical codebases can be deployed to either a single-node container or a Spark cluster.
-- It is possible to move to begin pipelines (by default) without distributed spark and then scale up to true spark with only infrastructure changes, i.e. without changes to transformation logic.
+- It is possible to begin developing pipelines without distributed spark by default and then scale up to true spark with only infrastructure changes, i.e. without changes to transformation logic.
 - This dual compatibility facilitates the use of both DuckDB and PySpark in real-world scenarios with low and decoupled code changes.
 
 > **Warning**: The DuckDB Spark API is currently experimental and not recommended for production use.
