@@ -45,7 +45,7 @@ There are plenty of options for orchestrators. One great choice of orchestrator 
 
 Dagster is a particularly good choice because it [separates the IO code from the pipeline code](https://docs.dagster.io/concepts/io-management/io-managers). This is particularly useful, because you could switch between duckdb spark and true pyspark without changing the etl pyspark code.
 
-In this repo there are three options for the io for the pipeline (this is still a WIP, not everything is quite finished):
+In this repo there are three options for the pipeline io (this is still a WIP, not everything is quite finished):
 * [Spark PySpark which saves to parquet for between each step](https://docs.dagster.io/integrations/spark) in the pipeline.
 * [Spark PySpark, which saves to a duckdb file at each step](https://dagster.io/integrations/dagster-duckdb-pyspark) in the pipeline (WIP).
 * DuckDB PySpark, which saves to a parquet between each step in the pipeline. 
