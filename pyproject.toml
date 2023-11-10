@@ -1,0 +1,37 @@
+[tool.poetry]
+name = "super-fast-etl-worker"
+version = "0.1.0"
+description = "Node Agnostic Spark"
+authors = ["Tom Burdge"]
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[tool.poetry.group.dev.dependencies]
+black = "*"
+flake8 = "*"
+isort = "*"
+nbstripout = "*"
+notebook = "*"
+rich = "*"
+pre-commit = "*"
+
+[tool.poetry.group.docs.dependencies]
+pydocstyle = {extras = ["toml"], version = "*"}
+
+[tool.poetry.group.test.dependencies]
+pytest = "*"
+
+[tool.black]
+line-length = 88
+
+[tool.isort]
+profile = 'black'
+
+[tool.pydocstyle]
+convention = "google"
+add-ignore = "D100,D101,D102,D103,D104,D105,D106,D107"
+
+[tool.dagster]
+module_name = "spark"
