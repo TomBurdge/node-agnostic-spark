@@ -8,7 +8,7 @@ Traditional PySpark is particularly well suited for scaling to massive datasets.
 - Multi-node operations in Spark involve either complex infrastructure or relatively high costs for serverless environments (e.g., DataBricks, DataProc).
 - Performance on single-machine computing is suboptimal with Spark.
 - For low latency requirements and medium-sized data, single machine alternatives can outperform Spark. One example for time series data is `functime`,
-- The carbon emissions of computing are very high. Serverless spark almost always provisions with at least two nodes - in cases where this is greater than the use case needs, this is needless carbon emissions that contribute to the climate crisis.
+- The carbon emissions of computing are very high. Serverless spark very often provisions with multiple machines - in cases where this is greater than the use case needs, this is needless carbon emissions that contribute to the climate crisis.
 
 Despite these drawbacks, many companies stick with Spark even for small data tasks due to familiarity with its well-crafted API.
 
