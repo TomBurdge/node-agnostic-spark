@@ -33,7 +33,7 @@ MotherDuck has discussed using DuckDB to enhance Spark's speed:
 
 Their demonstration showcases the potential in a toy scenario. 
 
-MotherDuck point out that a DuckDB spark client can save costs by provisioning tests on just a single node.
+MotherDuck point out that a DuckDB spark client can save costs by provisioning tests on just a single machine with reasonably low specs.
 
 But how about more complex, realistic ETL pipelines that are indifferent to running on single machines with DuckDB or distributed through Spark?
 
