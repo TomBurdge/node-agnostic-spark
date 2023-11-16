@@ -6,9 +6,9 @@ Traditional PySpark is particularly well suited for scaling to massive datasets.
 
 - Spark operates on a Java Virtual Machine, which introduces a significant overhead.
 - Multi-node operations in Spark involve either complex infrastructure or relatively high costs for serverless environments (e.g., DataBricks, DataProc).
-- Performance on single-node computing is suboptimal with Spark.
+- Performance on single-machine computing is suboptimal with Spark.
 - For low latency requirements and medium-sized data, single machine alternatives can outperform Spark. One example for time series data is `functime`,
-- The carbon emissions of computing are very high. Serverless spark almost always provisions with at least two nodes - in cases where this is greater than the use case needs, this is needless carbon emissions that contribute to the climate crisis.
+- The carbon emissions of computing are very high. Serverless spark very often provisions with multiple machines - in cases where this is greater than the use case needs, this is needless carbon emissions that contribute to the climate crisis.
 
 Despite these drawbacks, many companies stick with Spark even for small data tasks due to familiarity with its well-crafted API.
 
@@ -33,7 +33,7 @@ MotherDuck has discussed using DuckDB to enhance Spark's speed:
 
 Their demonstration showcases the potential in a toy scenario. 
 
-MotherDuck point out that a DuckDB spark client can save costs by provisioning tests on just a single node.
+MotherDuck point out that a DuckDB spark client can save costs by provisioning tests on just a single machine with reasonably low specs.
 
 But how about more complex, realistic ETL pipelines that are indifferent to running on single machines with DuckDB or distributed through Spark?
 
@@ -50,7 +50,7 @@ In this repo there are three options for the pipeline io (this is still a WIP, n
 * [Spark PySpark, which saves to a duckdb file at each step](https://dagster.io/integrations/dagster-duckdb-pyspark) in the pipeline (WIP).
 * DuckDB PySpark, which saves to a parquet between each step in the pipeline. 
 
-Dagster typically pickles its objects between each asset, but you can't pickle a DuckDB spark or regular PySpark session. As a result, dagster loads the files as parquets at each step (ELTL data pipelines). Both Spark and DuckDB write to parquet very efficiently, although it is a little cumbersome (though not the end of the world) to initiate a spark session at each step with true PySpark. This also makes testing a bit less like "unit" tests, i.e. testing the most basic units of code, but this is no worse than any other orchestrator with Spark.
+Dagster typically pickles its objects between each asset, but you can't pickle a DuckDB spark or regular PySpark session. As a result, dagster loads the files as parquets at each step (ELTL data pipelines). Both Spark and DuckDB write to parquet very efficiently, although it is a little cumbersome (though not the end of the world) to initiate a spark session at each step with true PySpark. This also makes testing a bit less like "unit" tests, i.e. testing the most basic units of code, because we need to preserve lazy execution. But this is no worse than any other orchestrator with Spark.
 
 By default, the pyspark IO code is commented. I will refactor this soon to make it more accessible.
 
